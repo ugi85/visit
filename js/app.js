@@ -63,15 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Reset scroll position smoothly to top of mobile frame
-    if (appScrollContainer) {
-      appScrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // Reset scroll position smoothly to top of page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // If RSVP tab, render and check for online updates
     if (tabId === 'rsvp') {
       renderGreetingsList();
-      fetchOnlineGreetings();
       fetchOnlineGreetings();
     }
   }

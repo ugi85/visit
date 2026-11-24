@@ -28,156 +28,79 @@
 
 body {
   font-family: var(--font-body);
-  background: radial-gradient(circle at 50% 10%, #F0FAFF 0%, #E0F4FF 50%, #D4EDFA 100%);
+  background-color: #F8FAFC;
   color: #1e293b;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
   position: relative;
   overflow-x: hidden;
 }
 
-/* Background Topographic Contour Lines on Desktop */
-.desktop-bg-pattern {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(50, 205, 50, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(230, 0, 126, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(11, 102, 35, 0.04) 0%, transparent 60%);
-  z-index: 0;
-}
-
-/* Outer Desktop Frame Container */
-.desktop-wrapper {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 8px;
-}
-
-@media (min-width: 640px) {
-  .desktop-wrapper {
-    padding: 24px 16px;
+@media (max-width: 640px) {
+  body {
+    background-color: #FFFFFF;
   }
 }
 
-/* Smartphone Mockup Viewport Container */
-.phone-frame {
+/* Main Responsive Web Container (Centered Card on Desktop, Edge-to-Edge on Mobile) */
+.app-main-wrapper {
   position: relative;
   width: 100%;
-  max-width: 440px;
-  height: 94vh;
-  max-height: 890px;
+  max-width: 576px;
+  min-height: 100vh;
+  margin: 0 auto;
   background: #FFFFFF;
-  border-radius: 40px;
-  box-shadow: 
-    0 25px 60px -15px rgba(11, 102, 35, 0.22),
-    0 0 0 10px #1e293b,
-    0 0 0 12px #64748b33,
-    0 35px 80px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border: 4px solid #0f172a;
-  transition: all 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  .phone-frame {
+@media (max-width: 640px) {
+  .app-main-wrapper {
     max-width: 100%;
-    height: 100vh;
-    max-height: 100%;
-    border-radius: 0;
     box-shadow: none;
     border: none;
   }
 }
 
-/* Phone Status Bar (Simulated Notch & Clock) */
-.phone-status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 22px 4px 22px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #334155;
-  background: #FFFFFF;
-  z-index: 40;
-  border-top-left-radius: 36px;
-  border-top-right-radius: 36px;
-}
-
-@media (max-width: 480px) {
-  .phone-status-bar {
-    border-radius: 0;
-    padding-top: 6px;
-  }
-}
-
-.phone-speaker-notch {
-  width: 80px;
-  height: 5px;
-  background: #0f172a;
-  border-radius: 9999px;
-  margin: 0 auto;
-}
-
-/* App Scrollable Content Area */
-.app-content-scroll {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  scroll-behavior: smooth;
-  padding-bottom: 96px; /* Space for Bottom Nav */
-}
-
 /* Custom Sleek Scrollbar */
-.app-content-scroll::-webkit-scrollbar {
-  width: 5px;
+::-webkit-scrollbar {
+  width: 6px;
 }
-.app-content-scroll::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
-.app-content-scroll::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 10px;
 }
-.app-content-scroll::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
 /* Decorative Ribbons */
 .ribbon-top-left {
   position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 130px;
+  top: 0px;
+  left: 0px;
+  width: 85px;
   height: auto;
   pointer-events: none;
-  z-index: 15;
+  z-index: 2;
   transform: rotate(0deg);
-  opacity: 0.95;
+  opacity: 0.85;
 }
 
 .ribbon-bottom-right-cover {
   position: absolute;
   bottom: -4px;
   right: -8px;
-  width: 100px;
+  width: 95px;
   height: auto;
   pointer-events: none;
   transform: rotate(180deg);
-  opacity: 0.8;
-  z-index: 10;
+  opacity: 0.75;
+  z-index: 2;
 }
 
 /* Dynamic Typography & Brush Sporty Styling */
@@ -336,13 +259,19 @@ body {
 
 /* Floating Action Buttons (FABs) Container (Right side) */
 .fab-container {
-  position: absolute;
-  right: 14px;
-  bottom: 84px; /* Just above bottom nav */
+  position: fixed;
+  right: 16px;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
   gap: 10px;
   z-index: 45;
+}
+
+@media (min-width: 640px) {
+  .fab-container {
+    right: max(16px, calc((100vw - 576px) / 2 + 16px));
+  }
 }
 
 .fab-btn {
@@ -418,20 +347,30 @@ body {
 
 /* Fixed Bottom Navigation Bar (5 tabs) */
 .bottom-nav {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 72px;
-  background: rgba(255, 255, 255, 0.96);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 576px;
+  height: calc(66px + env(safe-area-inset-bottom, 0px));
+  padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px)) 6px;
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(16px);
   border-top: 1px solid rgba(226, 232, 240, 0.9);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
-  padding: 4px 6px;
   z-index: 50;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 640px) {
+  .bottom-nav {
+    max-width: 100%;
+    left: 0;
+    transform: none;
+  }
 }
 
 .nav-item {
@@ -643,7 +582,7 @@ body {
 
 /* Modals */
 .modal-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(6px);

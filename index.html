@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Undangan Resmi RAKER AAG 2026 & AAG TREKKING CHALLENGE 2026 | PT Anugrah Amartha Global</title>
 
   <!-- Favicon / Brand Icon -->
@@ -57,33 +57,29 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
 
-  <!-- Subtle Desktop Backdrop Ambient Layer -->
-  <div class="desktop-bg-pattern"></div>
+  <!-- Main Responsive Web Container (Max-width on desktop, 100% on mobile) -->
+  <div class="app-main-wrapper w-full max-w-xl mx-auto min-h-screen bg-white shadow-md flex flex-col relative pb-28 md:border-x md:border-slate-200">
 
-  <!-- Desktop Presentation Wrapper -->
-  <div class="desktop-wrapper">
+    <!-- Corner Decorative Ribbon (Top-Left) -->
+    <img src="assets/ribbon-decor.svg" alt="AAG Ribbon Decor Top" class="ribbon-top-left">
 
-    <!-- Mobile Frame Viewport (Center-stage Smartphone Shell) -->
-    <main class="phone-frame">
+    <!-- Top Sticky Header Navigation -->
+    <header class="w-full py-3 px-5 flex items-center justify-between relative z-10 border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0">
+      <div class="flex items-center gap-2">
+        <img src="assets/aag-logo.svg" alt="AAG Logo" class="h-8 sm:h-9 w-auto">
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-extrabold uppercase border border-emerald-200">
+          <i class="fa-solid fa-mountain-sun text-emerald-600"></i>
+          <span>11 Des 2026</span>
+        </span>
+      </div>
+    </header>
 
-      <!-- Corner Decorative Ribbon (Top-Left) -->
-      <img src="assets/ribbon-decor.svg" alt="AAG Ribbon Decor Top" class="ribbon-top-left">
-
-      <!-- Simulated Smartphone Status Bar -->
-      <header class="phone-status-bar">
-        <span>09:41</span>
-        <div class="phone-speaker-notch"></div>
-        <div class="flex items-center gap-1.5 text-xs text-slate-700">
-          <i class="fa-solid fa-signal text-[10px]"></i>
-          <i class="fa-solid fa-wifi text-[10px]"></i>
-          <i class="fa-solid fa-battery-full text-[11px]"></i>
-        </div>
-      </header>
-
-      <!-- App Scrollable Content Viewport -->
-      <div class="app-content-scroll">
+    <!-- Main Content Container (Normal Body Scroll) -->
+    <main class="w-full flex-1">
 
         <!-- ============================================================== -->
         <!-- TAB 1: OPENING (HALAMAN SAMPUL) -->
@@ -94,7 +90,7 @@
           <div class="px-5 pt-4 pb-6 flex flex-col min-h-full">
 
             <!-- Top Header Logo -->
-            <div class="w-full flex justify-center mb-3">
+            <div class="w-full flex justify-center mb-3 relative z-10 pt-1">
               <img src="assets/aag-logo.svg" alt="AAG - Step Up to the Next Level" class="w-full max-w-[340px] drop-shadow-sm">
             </div>
 
@@ -581,8 +577,7 @@
 
           </div>
         </section>
-
-      </div><!-- End app-content-scroll -->
+      </main>
 
       <!-- Floating Action Buttons (FABs) in bottom-right corner -->
       <aside class="fab-container">
@@ -771,9 +766,7 @@
         </div>
       </div>
 
-    </main>
-
-  </div>
+    </div>
 
   <!-- Audio Synth Engine -->
   <script src="js/audio-synth.js"></script>
