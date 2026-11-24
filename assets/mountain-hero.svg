@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" fill="none" class="w-full h-auto">
+  <defs>
+    <!-- Sky & Sun Gradient -->
+    <linearGradient id="sky-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD" />
+      <stop offset="45%" stop-color="#E0F2FE" />
+      <stop offset="80%" stop-color="#F0FDF4" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <radialGradient id="sun-glow" cx="68%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#FDE047" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Mountain Layer Gradients -->
+    <linearGradient id="mt-layer-1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#86EFAC" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#BBF7D0" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="mt-layer-2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+
+    <linearGradient id="mt-layer-3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#166534"/>
+      <stop offset="100%" stop-color="#0B6623"/>
+    </linearGradient>
+
+    <linearGradient id="foreground-ridge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F5132"/>
+      <stop offset="100%" stop-color="#06401B"/>
+    </linearGradient>
+
+    <linearGradient id="flag-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E6007E"/>
+      <stop offset="100%" stop-color="#FF3399"/>
+    </linearGradient>
+
+    <!-- Trail ribbon dynamic streak -->
+    <linearGradient id="trail-streak" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#32CD32" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E6007E" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#32CD32" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="800" height="460" fill="url(#sky-grad)"/>
+
+  <!-- Morning Sun & Radiant Glow Behind Summit -->
+  <circle cx="560" cy="140" r="140" fill="url(#sun-glow)" />
+  <circle cx="560" cy="140" r="48" fill="#FEF08A" opacity="0.6"/>
+
+  <!-- Dynamic Cloud / Mist Streaks -->
+  <path d="M40 90 Q 140 70 240 85 T 440 80" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity="0.65"/>
+  <path d="M120 120 Q 200 105 280 115 T 400 110" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  <path d="M480 70 Q 560 55 640 68 T 760 62" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Birds soaring in the sky -->
+  <path d="M260 70 Q270 62 278 70 Q286 62 296 70" stroke="#166534" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M290 85 Q298 78 304 85 Q310 78 318 85" stroke="#166534" stroke-width="1.8" fill="none" opacity="0.5"/>
+  <path d="M230 95 Q236 90 242 95 Q248 90 254 95" stroke="#166534" stroke-width="1.5" fill="none" opacity="0.45"/>
+
+  <!-- Far Distant Mountain Range (Soft Pale Green) -->
+  <path d="M-20 260 L80 170 L200 240 L340 140 L480 230 L620 120 L740 210 L840 160 L840 460 L-20 460 Z" fill="url(#mt-layer-1)"/>
+
+  <!-- Mid-Distance Mountain Range (Forest Ridge) -->
+  <path d="M-20 310 L110 210 L250 280 L390 190 L520 250 L640 160 L750 240 L840 190 L840 460 L-20 460 Z" fill="url(#mt-layer-2)" opacity="0.9"/>
+
+  <!-- Pine Tree Silhouettes on Mid Mountain Slopes -->
+  <g fill="#14532D" opacity="0.8">
+    <!-- Cluster 1 (Left slope) -->
+    <polygon points="60,250 54,265 66,265" /><polygon points="60,260 52,275 68,275" /><polygon points="60,270 50,288 70,288" />
+    <polygon points="85,240 80,255 90,255" /><polygon points="85,250 78,265 92,265" /><polygon points="85,260 76,278 94,278" />
+    <polygon points="110,255 105,270 115,270" /><polygon points="110,265 103,280 117,280" />
+    <polygon points="135,270 130,285 140,285" />
+    
+    <!-- Cluster 2 (Mid-right ridge) -->
+    <polygon points="430,240 425,252 435,252" /><polygon points="430,248 423,262 437,262" />
+    <polygon points="450,230 444,245 456,245" /><polygon points="450,240 442,255 458,255" /><polygon points="450,250 440,270 460,270" />
+    <polygon points="475,245 470,258 480,258" />
+    <polygon points="500,255 495,268 505,268" />
+  </g>
+
+  <!-- Foreground Main Trekking Mountain & Summit Ridge (Deep Forest Green) -->
+  <!-- Left lower ridge curving up to an epic summit on the right (x: 520 - 700) -->
+  <path d="M-20 370 Q160 300 320 330 T600 210 L680 190 Q720 220 820 260 L820 460 L-20 460 Z" fill="url(#mt-layer-3)"/>
+
+  <!-- Dynamic Winding Trail Ribbon (representing the challenge trail route) -->
+  <path d="M-10 440 C140 410 180 370 280 370 C380 370 440 310 520 280 C580 255 610 230 650 205" 
+        stroke="url(#trail-streak)" stroke-width="4.5" stroke-dasharray="8 5" fill="none" />
+
+  <!-- Closer Foreground Ridge & Rocky Summit Outcrop -->
+  <path d="M-10 420 Q180 360 380 380 Q560 370 660 210 Q710 240 820 320 L820 460 L-10 460 Z" fill="url(#foreground-ridge)"/>
+
+  <!-- Pine Trees Along Foreground Ridge -->
+  <g fill="#052E16">
+    <!-- Left foreground forest -->
+    <polygon points="40,350 32,375 48,375" /><polygon points="40,365 30,390 50,390" /><polygon points="40,380 28,410 52,410" />
+    <polygon points="75,340 68,365 82,365" /><polygon points="75,355 65,380 85,380" /><polygon points="75,370 62,400 88,400" />
+    <polygon points="110,360 104,380 116,380" /><polygon points="110,375 102,395 118,395" />
+    <polygon points="145,375 140,395 150,395" />
+    <polygon points="180,385 174,405 186,405" />
+    
+    <!-- Trees on Summit approach slope -->
+    <polygon points="540,310 535,325 545,325" /><polygon points="540,320 532,335 548,335" />
+    <polygon points="565,290 560,305 570,305" /><polygon points="565,300 558,315 572,315" />
+    <polygon points="590,265 586,280 594,280" />
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- SUMMIT CELEBRATION: TRAIL RUNNERS & AAG FLAG (x: 620-720, y: 120-215) -->
+  <!-- ============================================================== -->
+  <g transform="translate(615, 105)">
+    <!-- Rock ledge highlight under feet -->
+    <path d="M10 102 Q45 96 95 98 Q115 105 130 115" stroke="#32CD32" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- PERSON 1: Flag Bearer at Peak (Holding flagpole with both hands) -->
+    <g fill="#021C0E">
+      <!-- Head -->
+      <circle cx="58" cy="42" r="6"/>
+      <!-- Cap visor facing right -->
+      <path d="M57 39 L68 39 L65 42 Z" fill="#021C0E"/>
+      <!-- Body / Torso leaning proudly -->
+      <path d="M54 48 L63 48 L65 72 L53 72 Z"/>
+      <!-- Backpack -->
+      <path d="M49 50 Q46 58 52 64 L54 52 Z"/>
+      <!-- Left Arm reaching up to flag pole -->
+      <path d="M55 52 L68 32 L72 34 L60 56 Z"/>
+      <!-- Right Arm holding lower pole -->
+      <path d="M62 54 L72 48 L74 52 L63 60 Z"/>
+      <!-- Stride Legs: Front leg planted on rock, back leg flexed -->
+      <!-- Left leg -->
+      <path d="M55 72 L64 88 L67 101 L59 101 L58 89 L51 72 Z"/>
+      <!-- Right leg (front, on higher rock) -->
+      <path d="M63 72 L72 82 L78 96 L86 96 L80 80 L67 72 Z"/>
+    </g>
+
+    <!-- FLAG POLE (Tall, angled, reaching into the sky) -->
+    <line x1="68" y1="5" x2="74" y2="102" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="68" y1="5" x2="74" y2="102" stroke="#E6007E" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Gold finial on top of pole -->
+    <circle cx="68" cy="5" r="4" fill="#FBBF24"/>
+
+    <!-- AAG WAVING FLAG (Vibrant Magenta with Lime border & White AAG logo) -->
+    <g>
+      <!-- Flag cloth waving in wind -->
+      <path d="M68 6 C95 -2 115 18 145 8 L142 44 C115 54 95 34 69 42 Z" fill="url(#flag-grad)" filter="drop-shadow(0px 3px 5px rgba(230,0,126,0.4))"/>
+      <!-- Lime accent stripe at flag top edge -->
+      <path d="M68 6 C95 -2 115 18 145 8 L144 14 C116 23 96 4 68 11 Z" fill="#32CD32"/>
+      
+      <!-- "AAG" Letters on Flag -->
+      <text x="76" y="32" font-family="'Outfit', 'Montserrat', sans-serif" font-size="16" font-weight="900" font-style="italic" fill="#FFFFFF" letter-spacing="1">
+        AAG
+      </text>
+      <!-- Star / arrow spark on flag -->
+      <polygon points="128,24 131,29 137,30 132,34 134,40 128,36 123,40 125,34 120,30 126,29" fill="#FEF08A" transform="scale(0.6) translate(80, 5)"/>
+    </g>
+
+    <!-- PERSON 2: Victorious Finisher (Both arms V-raised in celebration with trekking poles) -->
+    <g fill="#021C0E">
+      <!-- Head with headband -->
+      <circle cx="28" cy="46" r="5.5"/>
+      <rect x="23" y="44" width="10" height="2.5" fill="#32CD32"/>
+      <!-- Torso -->
+      <path d="M24 52 L34 52 L33 74 L23 74 Z"/>
+      <!-- Arms raised in V shape -->
+      <!-- Left arm -->
+      <path d="M24 54 L12 36 L15 34 L27 52 Z"/>
+      <!-- Right arm -->
+      <path d="M33 52 L44 36 L47 38 L35 54 Z"/>
+      <!-- Trekking poles held high in hands -->
+      <line x1="12" y1="36" x2="6" y2="72" stroke="#64748B" stroke-width="1.8"/>
+      <line x1="44" y1="36" x2="48" y2="72" stroke="#64748B" stroke-width="1.8"/>
+      <!-- Legs standing strong -->
+      <path d="M24 74 L18 90 L16 102 L22 102 L24 91 L28 74 Z"/>
+      <path d="M30 74 L34 89 L38 102 L44 102 L40 89 L33 74 Z"/>
+    </g>
+
+    <!-- PERSON 3: Trail Runner Sprinting up the crest (Dynamic forward lean) -->
+    <g fill="#021C0E">
+      <!-- Head with running cap -->
+      <circle cx="98" cy="54" r="5.5"/>
+      <path d="M96 50 L108 50 L104 53 Z"/>
+      <!-- Forward Leaning Torso -->
+      <path d="M92 60 L102 58 L98 78 L89 80 Z"/>
+      <!-- Running Arms -->
+      <path d="M98 62 L110 68 L108 72 L96 66 Z"/> <!-- forward arm -->
+      <path d="M92 63 L82 72 L80 69 L89 61 Z"/>  <!-- back arm -->
+      <!-- Running Stride Legs -->
+      <!-- Front leg landing -->
+      <path d="M94 79 L104 90 L100 102 L95 102 L98 92 L90 81 Z"/>
+      <!-- Back kicking leg -->
+      <path d="M89 80 L80 88 L72 86 L74 82 L82 83 L88 77 Z"/>
+    </g>
+
+    <!-- PERSON 4: Teammate cheering / waving from behind -->
+    <g fill="#021C0E">
+      <circle cx="4" cy="56" r="5"/>
+      <path d="M1 62 L9 62 L8 82 L1 82 Z"/>
+      <!-- Arm waving high -->
+      <path d="M2 64 L-8 48 L-5 46 L5 62 Z"/>
+      <!-- Legs -->
+      <path d="M1 82 L-2 101 L3 101 L6 82 Z"/>
+      <path d="M6 82 L9 101 L14 101 L9 82 Z"/>
+    </g>
+  </g>
+
+  <!-- Energetic Particle Sparks / Confetti Rising near Summit -->
+  <g>
+    <circle cx="680" cy="80" r="2.5" fill="#E6007E"/>
+    <circle cx="650" cy="65" r="2" fill="#32CD32"/>
+    <circle cx="710" cy="95" r="3" fill="#FBBF24"/>
+    <circle cx="635" cy="90" r="2" fill="#E6007E"/>
+    <circle cx="730" cy="70" r="2.5" fill="#32CD32"/>
+    <circle cx="695" cy="50" r="2" fill="#FBBF24"/>
+    <polygon points="665,45 668,52 660,50" fill="#E6007E" opacity="0.8"/>
+    <polygon points="720,110 724,116 718,118" fill="#32CD32" opacity="0.8"/>
+  </g>
+</svg>

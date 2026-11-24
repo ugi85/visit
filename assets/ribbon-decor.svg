@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" fill="none">
+  <defs>
+    <linearGradient id="ribbon-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#32CD32"/>
+      <stop offset="100%" stop-color="#0B6623"/>
+    </linearGradient>
+    <linearGradient id="ribbon-magenta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3399"/>
+      <stop offset="100%" stop-color="#E6007E"/>
+    </linearGradient>
+    <linearGradient id="ribbon-lime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A3E635"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <filter id="ribbon-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Broad Curved Magenta Ribbon Sweep -->
+  <path d="M -20 -10 C 60 40, 120 10, 170 80 C 195 115, 205 140, 240 160 L 225 180 C 190 155, 175 130, 150 95 C 105 35, 55 58, -20 12 Z" 
+        fill="url(#ribbon-magenta)" filter="url(#ribbon-shadow)" opacity="0.95"/>
+
+  <!-- Bright Forest/Lime Green Ribbon Overlap -->
+  <path d="M -10 -20 C 40 20, 90 2, 140 55 C 175 92, 185 118, 220 135 L 208 152 C 175 132, 162 108, 130 72 C 85 24, 35 38, -10 -6 Z" 
+        fill="url(#ribbon-green)" filter="url(#ribbon-shadow)"/>
+
+  <!-- Thin High-speed Lime Accent Streak -->
+  <path d="M 0 -25 C 50 10, 80 -5, 120 40 C 150 72, 170 95, 200 115 L 195 122 C 165 102, 145 80, 115 48 C 75 5, 45 18, 0 -18 Z" 
+        fill="url(#ribbon-lime)" opacity="0.9"/>
+</svg>
