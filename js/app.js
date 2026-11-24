@@ -3,6 +3,17 @@
  * PT Anugrah Amartha Global - Digital Invitation Core Logic
  */
 
+// =========================================================================
+// GOOGLE SHEETS INTEGRATION CONFIG
+// Masukkan URL Deployment Google Apps Script Anda di sini.
+// Contoh: 'https://script.google.com/macros/s/AKfycbx.../exec'
+// (Jika dibiarkan kosong, RSVP otomatis tersimpan di LocalStorage browser)
+// =========================================================================
+const GOOGLE_SHEETS_CONFIG = {
+  WEBAPP_URL: 'https://script.google.com/macros/s/AKfycbx4rTVnssSn9SQsf40Z8fb_pnKiz1Lkm8EYnq8RAG-tGiSyy4XlPULh3LBPsn4-DcpC8w/exec', // Tempelkan Web App URL dari Google Apps Script di sini
+  FETCH_ONLINE_GREETINGS: true
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   // 1. URL Parameter Handling (?to=Nama+Peserta)
@@ -57,9 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
       appScrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // If QR tab or specific modals, handle accordingly
+    // If RSVP tab, render and check for online updates
     if (tabId === 'rsvp') {
       renderGreetingsList();
+      fetchOnlineGreetings();
+      fetchOnlineGreetings();
     }
   }
 
@@ -158,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
           title: "Undangan Raker AAG 2026",
           text: shareText,
           url: shareUrl
-        }).catch(() => {});
+        }).catch(() => { });
       } else if (navigator.clipboard) {
         navigator.clipboard.writeText(shareUrl).then(() => {
           const originalText = btnShareTicket.innerHTML;
@@ -513,12 +526,42 @@ document.addEventListener('DOMContentLoaded', () => {
     return defaultGreetings;
   }
 
-  function saveGreetings(list) {
+  function saveGreetings(list, newEntry = null) {
     try {
       localStorage.setItem('aag_raker_rsvp_list', JSON.stringify(list));
     } catch (e) {
       console.warn("Storage save error", e);
     }
+
+    // Sinkronisasi otomatis ke Google Sheets jika URL telah dikonfigurasi
+    if (GOOGLE_SHEETS_CONFIG.WEBAPP_URL && newEntry) {
+      fetch(GOOGLE_SHEETS_CONFIG.WEBAPP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(newEntry)
+      }).then(() => {
+        console.log("Data RSVP berhasil terkirim ke Google Sheets");
+      }).catch(err => {
+        console.warn("Gagal mengirim ke Google Sheets:", err);
+      });
+    }
+  }
+
+  function fetchOnlineGreetings() {
+    if (!GOOGLE_SHEETS_CONFIG.WEBAPP_URL) return;
+    fetch(GOOGLE_SHEETS_CONFIG.WEBAPP_URL)
+      .then(res => res.json())
+      .then(result => {
+        if (result && result.status === 'success' && Array.isArray(result.data) && result.data.length > 0) {
+          try {
+            localStorage.setItem('aag_raker_rsvp_list', JSON.stringify(result.data));
+            renderGreetingsList();
+            fetchOnlineGreetings();
+          } catch (e) { }
+        }
+      })
+      .catch(err => console.warn("Koneksi Google Sheets:", err));
   }
 
   function renderGreetingsList() {
@@ -532,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
     list.forEach(item => {
       const card = document.createElement('div');
       card.className = "bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex flex-col gap-2 transition hover:border-emerald-200";
-      
+
       const isHadir = item.status === 'hadir';
       const initials = item.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
 
@@ -560,6 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderGreetingsList();
+  fetchOnlineGreetings();
 
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
@@ -595,8 +639,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentList = getStoredGreetings();
         currentList.unshift(newEntry);
-        saveGreetings(currentList);
+        saveGreetings(currentList, newEntry);
         renderGreetingsList();
+        fetchOnlineGreetings();
 
         // Celebration
         fireConfetti();

@@ -168,16 +168,16 @@ body {
   opacity: 0.95;
 }
 
-.ribbon-bottom-right {
+.ribbon-bottom-right-cover {
   position: absolute;
-  bottom: 74px;
-  right: -10px;
-  width: 120px;
+  bottom: -4px;
+  right: -8px;
+  width: 100px;
   height: auto;
   pointer-events: none;
-  z-index: 5;
   transform: rotate(180deg);
-  opacity: 0.75;
+  opacity: 0.8;
+  z-index: 10;
 }
 
 /* Dynamic Typography & Brush Sporty Styling */
